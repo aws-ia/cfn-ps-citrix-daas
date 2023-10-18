@@ -1,3 +1,7 @@
 // Include details about any licenses and how to sign up. Provide links as appropriate.
 
-There is no cost to use this Partner Solution, but you will be billed for any AWS services or resources that this Partner Solution deploys. For more information, refer to the https://fwd.aws/rA69w?[AWS Partner Solution General Information Guide^].
+This Partner Solution requires an active trial or a paid subscription to the Citrix DaaS service. If you don't have one, https://www.citrix.com/cloud/form/inquiry/[contact a Citrix representative^].
+
+There is no cost to use this Partner Solution, but you will be billed for any AWS services or resources that this Partner Solution deploys. For more information, refer to the https://fwd.aws/rA69w?[AWS Partner Solutions General Information Guide^].
+
+NOTE: https://aws.amazon.com/windows/resources/licensing/[Amazon EC2 AMIs with Windows Server] do not require Client Access Licenses (CALs). They include two Microsoft Remote Desktop Services licenses for administrative purposes. For Remote Desktop Session Host or Citrix DaaS use cases, we recommend obtaining additional Microsoft Remote Desktop Services licenses for additional users.
