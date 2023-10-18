@@ -1,33 +1,104 @@
 project:
-  name: cfn-sample-template
-  owner: quickstart@amazon.com
+  name: quickstart-citrix-daas
+  owner: quickstart-eng@amazon.com
+  shorten_stack_name: true
   package_lambda: false
   regions:
   - ap-northeast-1
   - ap-northeast-2
+  - ap-south-1
   - ap-southeast-1
   - ap-southeast-2
+  - ca-central-1
   - eu-central-1
   - eu-west-1
-  - sa-east-1
   - us-east-1
+  - us-east-2
   - us-west-1
   - us-west-2
+  s3_bucket: ''
 tests:
-  sample:
+  quickstart-citrix-no-vda-eu-central-1:
     parameters:
-      Param1: 'Inputs to Stack'
-      # Examples: of other taskcat dynamic input parameters for more into see http://taskcat.io
-      #
-      #      AvailabilityZones: $[taskcat_genaz_3]
-      #      ByteValue: 1
-      #      PasswordA: $[taskcat_genpass_8A]
-      #      PasswordB: $[taskcat_genpass_32S]
-      #      RandomNumber: $[taskcat_random-numbers]
-      #      RandomString: $[taskcat_random-string]
-      #      StackName: TestStack
-      #      UUID: $[taskcat_genuuid]
-      #
+      AvailabilityZones: $[taskcat_genaz_2]
+      CitrixAPIClientID: override_this
+      CitrixAPIClientSecret: override_this
+      CitrixCloudConnector1HostName: CTX-CC1
+      CitrixCloudConnector2HostName: CTX-CC2
+      CitrixCloudConnectorInstanceType: t2.large
+      CitrixCloudConnectorsWindowsServerVersion: WS2016FULLBASE
+      CitrixCustomerId: override_this
+      CitrixVDAHostName: CTX-VDA1
+      CitrixVDAInstanceType: t2.large
+      CitrixVDAWindowsServerVersion: WS2016FULLBASE
+      DeployRDGW: 'No'
+      DomainAdminPassword: $[taskcat_genpass_12]
+      DomainDNSName: example9cc7c9.com
+      DomainNetBIOSName: example9cc7c9
+      KeyPairName: $[taskcat_getkeypair]
+      QSS3BucketName: $[taskcat_autobucket]
+      QSS3BucketRegion: $[taskcat_current_region]
+      QSS3KeyPrefix: quickstart-citrix-daas/
+      RDGWCIDR: 10.0.0.0/16
+      RDGWInstanceType: t2.large
+      VPCCIDR: 10.0.0.0/16
     regions:
-    - us-east-2
-    template: templates/another-workload.template.yaml
+    - eu-central-1
+    s3_bucket: ''
+    template: templates/citrix-virtualapps-service-master.yaml
+  quickstart-citrix-no-vda-us-east-1:
+    parameters:
+      AvailabilityZones: $[taskcat_genaz_2]
+      CitrixAPIClientID: override_this
+      CitrixAPIClientSecret: override_this
+      CitrixCloudConnector1HostName: CTX-CC1
+      CitrixCloudConnector2HostName: CTX-CC2
+      CitrixCloudConnectorInstanceType: t3.large
+      CitrixCloudConnectorsWindowsServerVersion: WS2016FULLBASE
+      CitrixCustomerId: override_this
+      CitrixVDAHostName: CTX-VDA1
+      CitrixVDAInstanceType: t2.large
+      CitrixVDAWindowsServerVersion: WS2016FULLBASE
+      DeployRDGW: 'No'
+      DomainAdminPassword: $[taskcat_genpass_12]
+      DomainDNSName: example66f2ac.com
+      DomainNetBIOSName: example66f2ac
+      KeyPairName: $[taskcat_getkeypair]
+      QSS3BucketName: $[taskcat_autobucket]
+      QSS3BucketRegion: $[taskcat_current_region]
+      QSS3KeyPrefix: quickstart-citrix-daas/
+      RDGWCIDR: 10.0.0.0/16
+      RDGWInstanceType: t2.large
+      VPCCIDR: 10.0.0.0/16
+    regions:
+    - us-east-1
+    s3_bucket: ''
+    template: templates/citrix-virtualapps-service-master.yaml
+  quickstart-citrix-no-vda-us-west-1:
+    parameters:
+      AvailabilityZones: $[taskcat_genaz_2]
+      CitrixAPIClientID: override_this
+      CitrixAPIClientSecret: override_this
+      CitrixCloudConnector1HostName: CTX-CC1
+      CitrixCloudConnector2HostName: CTX-CC2
+      CitrixCloudConnectorInstanceType: t2.large
+      CitrixCloudConnectorsWindowsServerVersion: WS2016FULLBASE
+      CitrixCustomerId: override_this
+      CitrixVDAHostName: CTX-VDA1
+      CitrixVDAInstanceType: t2.large
+      CitrixVDAWindowsServerVersion: WS2016FULLBASE
+      DeployRDGW: 'No'
+      DomainAdminPassword: $[taskcat_genpass_12]
+      DomainDNSName: exampled61c35.com
+      DomainNetBIOSName: exampled61c35
+      KeyPairName: $[taskcat_getkeypair]
+      QSS3BucketName: $[taskcat_autobucket]
+      QSS3BucketRegion: $[taskcat_current_region]
+      QSS3KeyPrefix: quickstart-citrix-daas/
+      RDGWCIDR: 10.0.0.0/16
+      RDGWInstanceType: t2.large
+      VPCCIDR: 10.0.0.0/16
+    regions:
+    - us-west-1
+    s3_bucket: ''
+    template: templates/citrix-virtualapps-service-master.yaml
