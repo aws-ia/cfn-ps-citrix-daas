@@ -1,0 +1,80 @@
+global:
+  marketplace-ami: false
+  owner: quickstart-eng@amazon.com
+  qsname: quickstart-citrix-virtualapps-service
+  regions:
+    - ap-northeast-1
+    - ap-northeast-2
+    - ap-south-1
+    - ap-southeast-1
+    - ap-southeast-2
+    - ca-central-1
+    - eu-central-1
+    - eu-west-1
+    - us-east-1
+    - us-east-2
+    - us-west-1
+    - us-west-2
+  reporting: true
+ 
+tests:
+  quickstart-citrix-ap-northeast-1:
+    parameter_input: params-master-ap-northeast-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - ap-northeast-1
+#  quickstart-citrix-ap-northeast-2:
+#    parameter_input: params-master-ap-northeast-2.json
+#    template_file: citrix-virtualapps-service-master.yaml
+#    regions:
+#      - ap-northeast-2
+  quickstart-citrix-ap-south-1:
+    parameter_input: params-master-ap-south-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - ap-south-1
+  quickstart-citrix-ap-southeast-1:
+    parameter_input: params-master-ap-southeast-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - ap-southeast-1
+  quickstart-citrix-ap-southeast-2:
+    parameter_input: params-master-ap-southeast-2.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - ap-southeast-2
+  quickstart-citrix-ca-central-1:
+    parameter_input: params-master-ca-central-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - ca-central-1
+  quickstart-citrix-eu-central-1:
+    parameter_input: params-master-eu-central-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - eu-central-1
+  quickstart-citrix-eu-west-1:
+    parameter_input: params-master-eu-west-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - eu-west-1
+  quickstart-citrix-us-east-1:
+    parameter_input: params-master-us-east-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - us-east-1
+  quickstart-citrix-us-east-2:
+    parameter_input: params-master-us-east-2.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - us-east-2
+  quickstart-citrix-us-west-1:
+    parameter_input: params-master-us-west-1.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - us-west-1
+  quickstart-citrix-us-west-2:
+    parameter_input: params-master-us-west-2.json
+    template_file: citrix-virtualapps-service-master.yaml
+    regions:
+      - us-west-2

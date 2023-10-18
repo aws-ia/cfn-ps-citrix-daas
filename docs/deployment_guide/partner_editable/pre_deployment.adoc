@@ -1,3 +1,17 @@
 //Include any predeployment steps here, such as signing up for a Marketplace AMI or making any changes to a partner account. If there are no predeployment steps, leave this file empty.
 
 == Predeployment steps
+
+=== Sign up for a DaaS subscription
+
+This Partner Solution requires a Citrix Cloud tenant with an active trial or a paid subscription to the Citrix DaaS service. If you don't have a subscription, https://www.citrix.com/products/citrix-cloud/form/inquiry/[contact a Citrix representative^].
+
+=== Create a Secure Client
+
+After you obtain a DaaS subscription, refer to https://developer.cloud.com/citrix-cloud/citrix-cloud-api-overview/docs/get-started-with-citrix-cloud-apis#create-an-api-client[Create an API client^] to create a secure client in your Citrix Cloud tenant.
+
+When creating the client, copy the Customer ID, Secure Client ID, and Secure Client Secret provided. During deployment, enter these values in the AWS CloudFormation console for the following parameters:
+
+* **Citrix Customer ID** – Partner Solution *Citrix Cloud Customer ID* (`CitrixCustomerId`) parameter.
+* **Citrix Secure Client ID** – Partner Solution *Citrix Cloud Secure Client ID* (`CitrixAPIClientID`) parameter.
+* **Citrix Secure Client Secret** – Partner Solution *Citrix Cloud Secure Client Secret* (`CitrixAPIClientSecret`) parameter.

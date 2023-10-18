@@ -1,0 +1,82 @@
+[
+    {
+        "ParameterKey": "AvailabilityZones",
+        "ParameterValue": "$[taskcat_genaz_2]"
+    },
+    {
+        "ParameterKey": "CitrixAPIClientID",
+        "ParameterValue": "override_this"
+    },
+    {
+        "ParameterKey": "CitrixAPIClientSecret",
+        "ParameterValue": "override_this"
+    },
+    {
+        "ParameterKey": "CitrixCloudConnector1HostName",
+        "ParameterValue": "CTX-CC1"
+    },
+    {
+        "ParameterKey": "CitrixCloudConnector2HostName",
+        "ParameterValue": "CTX-CC2"
+    },
+    {
+        "ParameterKey": "CitrixCloudConnectorInstanceType",
+        "ParameterValue": "t2.large"
+    },
+    {
+        "ParameterKey": "CitrixCloudConnectorsWindowsServerVersion",
+        "ParameterValue": "WS2016FULLBASE"
+    },
+    {
+        "ParameterKey": "CitrixCustomerId",
+        "ParameterValue": "override_this"
+    },
+    {
+        "ParameterKey": "CitrixVDAHostName",
+        "ParameterValue": "CTX-VDA1"
+    },
+    {
+        "ParameterKey": "CitrixVDAInstanceType",
+        "ParameterValue": "t2.large"
+    },
+    {
+        "ParameterKey": "CitrixVDAWindowsServerVersion",
+        "ParameterValue": "WS2016FULLBASE"
+    },
+    {
+        "ParameterKey": "DomainAdminPassword",
+        "ParameterValue": "$[taskcat_genpass_12]"
+    },
+    {
+        "ParameterKey": "DomainDNSName",
+        "ParameterValue": "example9cc7c9.com"
+    },
+    {
+        "ParameterKey": "DomainNetBIOSName",
+        "ParameterValue": "example9cc7c9"
+    },
+    {
+        "ParameterKey": "KeyPairName",
+        "ParameterValue": "$[taskcat_getkeypair]"
+    },
+    {
+        "ParameterKey":"QSS3BucketName",
+        "ParameterValue":"$[taskcat_autobucket]"
+    },
+    {
+        "ParameterKey": "QSS3KeyPrefix",
+        "ParameterValue": "quickstart-citrix-virtualapps-service/"
+    },
+    {
+        "ParameterKey": "RDGWCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    },
+    {
+        "ParameterKey": "RDGWInstanceType",
+        "ParameterValue": "t2.large"
+    },
+    {
+        "ParameterKey": "VPCCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    }
+]

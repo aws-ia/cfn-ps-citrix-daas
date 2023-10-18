@@ -1,3 +1,131 @@
 // Include any postdeployment steps here, such as steps necessary to test that the deployment was successful. If there are no postdeployment steps, leave this file empty.
-
 == Postdeployment steps
+
+=== Connect to the EC2 instances deployed by the Partner Solution
+The Partner Solution deploys the following EC2 instances to your AWS account:
+
+* One Remote Desktop Gateway host (RD Gateway)
+* Two Citrix Cloud Connectors
+* One Citrix Virtual Delivery Agent (VDA)
+
+The Citrix Cloud Connector and VDA EC2 instances do not have public IP addresses. To connect to them, first use Remote Desktop to connect to the RD Gateway instance. Then use Remote Desktop on the RD Gateway to connect to the private IP address of the desired EC2 instance.
+
+==== Connect to the RD Gateway instance
+
+. Sign in to the https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1#[AWS Management Console^] and open the CloudFormation console.
+. In the left navigation pane, choose *Stacks*.
+. On the *Stacks* page, choose the Citrix DaaS stack.
+. Choose the *Outputs* tab. Note the following values:
+** *BastionHostEIP* –  RD Gateway IP address.
+** *DomainAdmin* – User name to log in to the RD Gateway.
+** *DomainAdminPassword* – Password to log in to the RD Gateway.
+. Using Remote Desktop, connect to the RD Gateway *BastionHostEIP* address. Use the *DomainAdmin* user name and *DomainAdminPassword* password to log in.
+
+==== Connect to a Citrix Cloud Connector or VDA instance
+
+. Sign in to the https://us-east-1.console.aws.amazon.com/console/home?region=us-east-1#[AWS Management Console^] and open the EC2 console.
+. In the left navigation pane, choose *Instances*.
+. On the *Instances* page, choose the EC2 instance.
+. Choose the *Networking* tab. Note the private IP address.
+. Use Remote Desktop on the RD Gateway to connect to the private IP addresses of the EC2 instance.
+
+=== Explore the Resources Created in Your Citrix Cloud Tenant
+This Partner Solution creates the following resources in your Citrix Cloud tenant, many of which you can customize. To access them, log into the https://citrix.cloud.com/[Citrix Cloud management console^].
+
+* A resource location for each deployment. The resource location name includes the Deployment ID that the Partner Solution generates. This unique value is included in the name of many of the resources the Partner Solution creates. In the example shown in <<postdeploy1>> the Deployment ID is `0ew8`.
+
++
+[#postdeploy1]
+.Partner Solution Citrix resource location
+image::../docs/deployment_guide/images/citrix_resource_location.png[Citrix resource location]
+
++
+The resource location contains the two Citrix Cloud Connector instances that the Partner Solution templates create.
+
++
+[#postdeploy2]
+.Partner Solution Citrix Cloud Connectors
+image::../docs/deployment_guide/images/citrix_cloud_connectors.png[Citrix resource location]
+
++
+The Partner Solution adds the Active Directory to which the Citrix Cloud connectors join to the list of available domains in the Citrix Cloud tenant. To access the domain list in the Citrix Cloud management console, choose *Identity and Access Management*, and then choose https://us.cloud.com/identity/domains[Domains^].
+
++
+In <<postdeploy3>> domain `qstest.com forest/domain` (the name chosen for this Partner Solution sample deployment) appears in the Citrix Cloud tenant.
+
++
+[#postdeploy3]
+.Citrix Cloud tenant domains
+image::../docs/deployment_guide/images/tenant_domains.png[Citrix domains]
+
+* A Hosting Connection and a Hosting Resource to provision and manage the VDA with Citrix DaaS. For more information, refer to https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/connections.html[Create and manage connections^].
+
++
+[#postdeploy4]
+.Citrix Cloud hosting connection
+image::../docs/deployment_guide/images/hosting_connections.png[Hosting connections]
+
+* One VDA deployed to a single Windows Server 2016 EC2 instance. Virtual applications and desktops are installed to and delivered from this EC2 instance.
+
+* One manually provisioned, power-managed machine catalog based on Windows Server 2016. Machine catalogs typically contain one or more identically configured VDAs that share the properties of the machine catalog. For more information, refer to https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/machine-catalogs-create.html[Create machine catalogs^].
+
++
+[#postdeploy5]
+.Citrix Cloud machine catalog
+image::../docs/deployment_guide/images/machine_catalog.png[Machine catalog]
+
++
+The Partner Solution template adds the VDA instance it creates to the machine catalog.
+
++
+[#postdeploy6]
+.Citrix Cloud VDA
+image::../docs/deployment_guide/images/vda.png[Citrix VDA]
+
+* One Delivery Group available to all authenticated users. Virtual applications and desktops are defined by Delivery Groups. Delivery Groups have a number of attributes associated with them, including apps, desktops, users, and machine catalogs. For more information, refer to https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/delivery-groups-create.html[Create delivery groups^].
+
++
+[#postdeploy7]
+.Citrix Cloud delivery group
+image::../docs/deployment_guide/images/delivery_group.png[Citrix Cloud delivery group]
+
+* Two sample applications and a published desktop delivered from the machine catalog.
+
++
+[#postdeploy8]
+.Citrix Cloud defined applications
+image::../docs/deployment_guide/images/sample_applications.png[sample applications]
+
++
+[#postdeploy9]
+.Citrix Cloud published desktop
+image::../docs/deployment_guide/images/published_desktop.png[published desktop]
+
+=== Log in to Citrix Cloud Workspace
+
+. In the https://citrix.cloud.com/[Citrix Cloud management console^], choose *Workspace Configuration*. On the *Access* tab, note the *Workspace URL*.
+. Navigate to the Workspace URL using either the Citrix Workspace app or a web browser. Log in with a valid AD user's credentials.
+
+The Partner Solution deploys two sample apps and one sample desktop, which appear in the Citrix Workspace.
+
+[#postdeploy12]
+.Citrix Cloud Workspace published apps and desktop
+image::../docs/deployment_guide/images/workspace_apps.png[workspace_apps]
+
+=== Customizing Your Citrix DaaS Deployment on AWS
+This Partner Solution deploys a fully functional Citrix DaaS system, but you can customize the delivery group to match your organization’s needs. You can also install additional applications on the VDA by remotely connecting to the VDA instance as an administrator. Refer to the links in the link:#_resources[Resources] section of this guide for more information.
+
+
+== Resources
+
+* Citrix
+** https://docs.citrix.com/en-us/citrix-daas/install-configure/delivery-groups-manage.html[Manage delivery groups^]
+** https://docs.citrix.com/en-us/citrix-virtual-apps-desktops/manage-deployment/applications-manage.html[Applications^]
+** https://docs.citrix.com/en-us/citrix-virtual-apps-desktops/manage-deployment/user-profiles.html[User profiles^]
+** https://docs.citrix.com/en-us/workspace-environment-management/service.html[Workspace Environment Management service^]
+** https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/machine-catalogs-create.html#prepare-a-master-image-on-the-hypervisor-or-cloud-service[Prepare a master image on the hypervisor or cloud service^]
+** https://www.citrix.com/solutions/app-delivery-and-security/[Citrix Application Delivery and Security^]
+
+
+
+
